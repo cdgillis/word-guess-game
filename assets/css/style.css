@@ -1,0 +1,26 @@
+.header {
+    margin: 0;
+    padding: 20px;
+    border: 5px;
+    width: auto;
+}
+
+.title {
+    color: navy;
+    background-color: silver;
+}
+
+#bigTitle {
+    text-align: center;
+}
+
+#subTitle {
+    text-align: left;
+    font-family: cursive;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+}
+
