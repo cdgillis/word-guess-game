@@ -3,15 +3,12 @@ var currentWord = ""; // Stores the word we want the player to guess
 var answerArray = []; // Stores the answer but begins with _
 var alreadyGuessedArr = []; // Space to store letter guesses not matched correctly
 var wins = 0;
+var x = document.getElementById("win-audio");
+var y = document.getElementById("wrong-audio");
 
-var x = document.getElementById("win-audio"); 
-
-function playAudio() { 
-    x.play(); 
-} 
-
-function pauseAudio() { 
-    x.pause(); 
+function playAudio() {
+    x.play();
+    y.play();
 }
 
 window.onload = function startup() {
@@ -34,39 +31,44 @@ var numberGuesses = document.getElementById("guesses-left").innerHTML = 12;
 
 // Words Guessed
 document.onkeyup = function (event) {
-
-    /*// Process user's letter input
-    for (var i = 0; i < currentWord.length; i++) {
-        eachChar.push(currentWord.charAt(i));
-        hiddenChar.push(" _ ");
-    }*/
-
+    numberGuesses -= 1;
     var letter = event.key;
     console.log(letter);
 
     var found = false; //I made this variable
     // Set number of guesses
-    
 
     //Look for letter in word
     for (i = 0; i < currentWord.length; i++) {
         if (currentWord[i] == letter) {
             // Found the letter
+            x.play();
             found = true;
             answerArray[i] = letter;
             document.getElementById("answer").innerHTML = answerArray.join(" ");
+            numberGuesses--;
         }
-        numberGuesses--;
+
     }
     // Finished checking the word for the letter
     if (!found) {
+        y.play();
         alreadyGuessedArr.push(letter);
         document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
         numberGuesses--;
+
     }
+    // $("#game-won").css("display");
+    // Make a counter for guesses remaining
    
+    document.getElementById("guessesLeft").innerHTML = numberGuesses--;
+
+
 }
-// Update the game for remaining unknowns
+
+
+
+/*// Update the game for remaining unknowns
 var remaining_letters = answerArray.length;
 // recount the remaining letters
 for (i = 0; i < answerArray.length; i++) {
@@ -80,6 +82,9 @@ if (remaining_letters == 0) {
     playAudio();
     $("#game-won").css("display");
 }
+*/
+
+
 
 /*
     

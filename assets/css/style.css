@@ -4,8 +4,9 @@ body {
     font-weight: bold;
     width: 100%;
     height: 400px;
-    background: url('super-mario-bros-3-id-software.jpg') no-repeat center center fixed;
+    background: url('supermario.jpg') no-repeat center center fixed;
     background-size: cover;
+    text-align: center;
 }
 
 .header {
@@ -40,31 +41,30 @@ body {
 
     margin-left: 40px;
     font-family: 'Bungee Inline', cursive;
+    text-align: center;
 }
 
 #winBox {
 
-    width: 200px;
-    height: 50px;
-    background-color: black;
     color: lime;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
-    float: right;
-    margin-right: 400px;
+   
 }
 
 #user-guess {
 
     width: 20%;
-    height: 60px;
+    height: 40px;
     background-color: white;
     padding: 10px;
+    display: inline-block;
+
 }
 
 #guesses-left {
 
-    color: white;
+    color: hotpink;
     font-family: 'Press Start 2P', cursive;
     font-size: 25px;
     margin-left: 10px;
@@ -75,5 +75,12 @@ body {
 #answer {
     
     font-size: 25px;
-    margin-left: 70px;
+    text-align: center;
+}
+
+#game-won {
+    
+    width: 100%;
+    height: auto;
+    background-color: black
 }
