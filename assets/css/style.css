@@ -1,26 +1,79 @@
-.header {
-    margin: 0;
-    padding: 20px;
-    border: 5px;
-    width: auto;
+body {
+
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    height: 400px;
+    background: url('super-mario-bros-3-id-software.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-.title {
-    color: navy;
-    background-color: silver;
+.header {
+
+    align-items: center;
+    width: 100%;
+    height: 120px;
+    background-color: black;
+    color: white;
+    padding-left: 40px;
 }
 
 #bigTitle {
-    text-align: center;
+
+    font-family: 'Monoton', cursive;
+    padding-top: 20px;
+    margin-left: 40px;
+    text-align: left;
+    font-size: 50px;
 }
 
 #subTitle {
-    text-align: left;
-    font-family: cursive;
-}
 
-body {
-    font-family: sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    margin-right: 40px;
+    padding-right: 40px;
     text-align: center;
 }
 
+
+#container {
+
+    margin-left: 40px;
+    font-family: 'Bungee Inline', cursive;
+}
+
+#winBox {
+
+    width: 200px;
+    height: 50px;
+    background-color: black;
+    color: lime;
+    padding: 10px;
+    font-family: 'Press Start 2P', cursive;
+    float: right;
+    margin-right: 400px;
+}
+
+#user-guess {
+
+    width: 20%;
+    height: 60px;
+    background-color: white;
+    padding: 10px;
+}
+
+#guesses-left {
+
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 25px;
+    margin-left: 10px;
+    margin-top: 15px;
+    padding-top: 30px;
+}
+
+#answer {
+    
+    font-size: 25px;
+    margin-left: 70px;
+}
