@@ -7,6 +7,7 @@ body {
     background: url('supermario.jpg') no-repeat center center fixed;
     background-size: cover;
     text-align: center;
+    z-index: -1;
 }
 
 .header {
@@ -36,7 +37,6 @@ body {
     text-align: center;
 }
 
-
 #container {
 
     margin-left: 40px;
@@ -46,10 +46,9 @@ body {
 
 #winBox {
 
-    color: lime;
+    color: white;
     padding: 10px;
     font-family: 'Press Start 2P', cursive;
-   
 }
 
 #user-guess {
@@ -59,7 +58,6 @@ body {
     background-color: white;
     padding: 10px;
     display: inline-block;
-
 }
 
 #guesses-left {
@@ -78,9 +76,62 @@ body {
     text-align: center;
 }
 
+.wrapper {
+
+    text-align: center;
+    padding-top: 40px;
+}
+
+.button {
+
+    top: 50%;
+    background-color: #4CAF50;
+    border: none;color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 4px 2px;
+    margin-left: 0;
+    font-family: 'Press Start 2P', cursive;
+}
+
 #game-won {
     
     width: 100%;
-    height: auto;
-    background-color: black
+    height: 400px;
+    background-color: green;
+    color: white;
+    display: block;
+}
+
+#game-lost {
+
+    width: 100%;
+    height: 100%;
+    color: white;
+    background-color: black;
+}
+
+#won-text {
+
+    margin: 20px 20px;
+    color: white;
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+#lost-text {
+
+    z-index: 1;
+    font-family: 'Press Start 2P', cursive;
+    margin: 80px;
+    font-size: 50px;
+}
+
+#lost-background {
+
+    height: 100%;
+    width: 100%;
+    z-index: 0;
 }
