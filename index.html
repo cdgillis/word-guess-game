@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Monoton|Press+Start+2P" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -14,26 +15,29 @@
 </head>
 
 <body>
+    <!-- ENTIRE PAGE BORDER -->
+    <div id="left"></div>
+    <div id="right"></div>
+    <div id="top"></div>
+    <div id="bottom"></div>
     <!-- HEADER -->
     <div class="header">
         <h1 id="bigTitle">H A N G M A N</h1>
-        <br>
-        <h2 id="subTitle">Super Mario Stylez</h2>
+        <h2 id="subTitle" class="animated fadeInLeft">Super Mario Stylez</h2>
     </div>
     <br>
-    <!-- My attempt, from scratch-->
+    <!-- GAME DIV-->
     <div id="container">
+        <br>
         <br>
         <br>
         <br>
         <h2>Press any key to get started!</h2>
         <br>
-        <br>
         <h2 id="winBox">WINS: <span id="win-counter"></span></h2>
         <br>
         <h2><span id="answer"></span></h2>
         <div id="guess"></div>
-        <br>
         <br>
         <br>
         <div id="guess-counter">Number of guesses remaining: <span id="guesses-left"></span></div>
@@ -43,15 +47,16 @@
         <p id="user-guess"></p>
     </div>
 
+    <!-- USER WINS: LEVEL COMPLETE -->
     <div class="wrapper" id="game-won">
         <img id="mushroom" src="assets/images/1UP_Mushroom.png" alt="1up">
-        <p id="won-text">LEVEL COMPLETE</p>
+        <p id="won-text" class="animated tada">LEVEL COMPLETE</p>
         <button class="button" onclick="resetGame()">Continue</button>
-        
+        <!-- USER LOST (RAN OUT OF GUESSES) -->
     </div>
     <div class="wrapper" id="game-lost">
         <!-- <img id="lost-background" src="assets/images/mario-curtain.jpg" alt="curtains"> -->
-        <p id="lost-text">GAME OVER</p>
+        <p id="lost-text" class="animated rubberBand">GAME OVER</p>
         <button class="button" onclick="resetGame()">Play Again!</button>
     </div>
     <!-- <button id="resetBtn">Play Again</button> -->

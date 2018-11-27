@@ -1,7 +1,41 @@
+/* SCREEN */
+@media 
+
+/* Fairly small screens including iphones */
+only screen and (max-width: 500px),
+
+/* iPads */
+only screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+
+{
+	#top, #bottom, #left, #right { display: none; }
+}
+
+/* OUTSIDE BORDER */
+#top, #bottom, #left, #right {
+
+	background: black;
+	position: fixed;
+	}
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 50px;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+	/* #top, #bottom {
+		left: 0; right: 0;
+		height: 14px;
+		}
+		#top { top: 0; }
+        #bottom { bottom: 0; }
+      */
+
+
+/* CONTENT */
 body {
 
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 22px;
     width: 100%;
     height: 400px;
     background: url('supermario.jpg') no-repeat center center fixed;
@@ -10,40 +44,48 @@ body {
     z-index: -1;
 }
 
+/*  HEADER  */
 .header {
 
-    align-items: center;
+    font-family: 'Press Start 2P', cursive;
     width: 100%;
     height: 120px;
     background-color: black;
     color: white;
     padding-left: 40px;
+    padding-bottom: 10px;
+    display: inline-block;
+    margin-bottom: 15px;
 }
 
 #bigTitle {
 
-    font-family: 'Monoton', cursive;
     padding-top: 20px;
-    margin-left: 40px;
+    margin-left: 11px;
+    font-size: 230%;
     text-align: left;
-    font-size: 50px;
+    float: left;
+    margin-top: 28px;
 }
 
 #subTitle {
 
-    font-family: 'Press Start 2P', cursive;
-    margin-right: 40px;
     padding-right: 40px;
-    text-align: center;
+    margin-right: 50px;
+    float: right;
+    clear: both;
 }
 
+/* GENERAL GAME DIV */
 #container {
 
     margin-left: 40px;
     font-family: 'Bungee Inline', cursive;
     text-align: center;
+    font-weight: bold;
 }
 
+/* SCOREBOARD */
 #winBox {
 
     color: white;
@@ -51,15 +93,19 @@ body {
     font-family: 'Press Start 2P', cursive;
 }
 
+/* ALREADY GUESSED ARRAY */
 #user-guess {
 
     width: 20%;
-    height: 40px;
-    background-color: white;
-    padding: 10px;
+    height: 18px;
+    background-color: black;
+    color: white;
+    margin-top: 2px;
+    padding: 25px;
     display: inline-block;
 }
 
+/* COUNTING DOWN GUESSES LEFT */
 #guesses-left {
 
     color: hotpink;
@@ -80,8 +126,52 @@ body {
 
     text-align: center;
     padding-top: 40px;
+    color: white;
+    display: block;
+    
+}
+/* WON GAME */
+#game-won {
+    
+    width: 100%;
+    height: 400px;
+    background-color: green;
+   
 }
 
+#won-text {
+
+    margin: 20px 20px;
+    font-size: 50px;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* LOST GAME */
+#game-lost {
+
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+#lost-text {
+
+    z-index: 1;
+    font-family: 'Press Start 2P', cursive;
+    margin: 80px;
+    font-size: 50px;
+}
+
+/* #lost-background {
+
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+} */
+
+
+
+/*  RESET BUTTON  */
 .button {
 
     top: 50%;
@@ -94,44 +184,4 @@ body {
     margin: 4px 2px;
     margin-left: 0;
     font-family: 'Press Start 2P', cursive;
-}
-
-#game-won {
-    
-    width: 100%;
-    height: 400px;
-    background-color: green;
-    color: white;
-    display: block;
-}
-
-#game-lost {
-
-    width: 100%;
-    height: 100%;
-    color: white;
-    background-color: black;
-}
-
-#won-text {
-
-    margin: 20px 20px;
-    color: white;
-    font-size: 50px;
-    font-family: 'Press Start 2P', cursive;
-}
-
-#lost-text {
-
-    z-index: 1;
-    font-family: 'Press Start 2P', cursive;
-    margin: 80px;
-    font-size: 50px;
-}
-
-#lost-background {
-
-    height: 100%;
-    width: 100%;
-    z-index: 0;
 }

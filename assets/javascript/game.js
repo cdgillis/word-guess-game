@@ -7,15 +7,15 @@ var x = document.getElementById("correct-audio");
 var y = document.getElementById("wrong-audio");
 var won = document.getElementById("won-audio");
 var lost = document.getElementById("lost-audio");
-// var vid = document.getElementById("myVideo"); 
 
+// AUDIO
 function playAudio() {
     x.play();
     y.play();
     won.play();
     lost.play();
 }
-
+// START GAME FUNCTION
 function startup() {
 
     $("#game-won").css("display", "none"); //Need to create an on.click function with a button
@@ -34,7 +34,9 @@ function startup() {
     console.log(currentWord);
 }
 
+// resetGame() is called in HTML script
 function resetGame() {
+
     numberGuesses = 12;
     document.getElementById("guesses-left").innerHTML = numberGuesses;
     answerArray = [];
@@ -44,12 +46,16 @@ function resetGame() {
 }
 
 function wonGame() {
+    
     console.log("Level Complete!");
     $("#container").css("display", "none");
     $("#game-won").css("display", "block");
     won.play();
+    // Increase win count by 1
+    wins++;
+    // Print new win total in HTML
+    document.getElementById("win-counter").innerHTML = wins;
 }
-
 function lostGame() {
     console.log("GAME OVER");
     $("#container").css("display", "none");
@@ -57,24 +63,47 @@ function lostGame() {
     lost.play();
 }
 
+// ON PAGE LOAD
+
 window.onload = startup;
+
 var i = 0;
 var numberGuesses = 12;
 console.log(numberGuesses);
 document.getElementById("guesses-left").innerHTML = numberGuesses;
-// Words Guessed
+
+// USER SELECTS A LETTER GUESS
+
 document.onkeyup = function (event) {
+
     numberGuesses -= 1;
     document.getElementById("guesses-left").innerHTML = numberGuesses;
     console.log(numberGuesses);
     var letter = event.key;
+    // var allGuessedLetters = [];
     console.log(letter);
 
-    var found = false; //I made this variable
+    var found = false; // A variable name that I chose with a boolean
+
     // Set number of guesses
+
+    // if (allGuessedLetters.length) {
+
+    //     for (var i = 0; i < allGuessedLetters.length; i++) {
+    //         if (allGuessedLetters[i] === letter) {
+    //             console.log("TRY AGAIN");
+    //         } else {
+    //             console.log("WOOHOO");
+    //         }
+    //     }
+    // } else {
+    //     allGuessedLetters.push(letter);
+    // }
+    // console.log(allGuessedLetters);
 
     //Look for letter in word
     for (i = 0; i < currentWord.length; i++) {
+
         if (currentWord[i] == letter) {
             // Found the letter
             x.play();
@@ -83,7 +112,6 @@ document.onkeyup = function (event) {
             document.getElementById("answer").innerHTML = answerArray.join(" ");
             // numberGuesses--;
         }
-
     }
     // Finished checking the word for the letter
     if (!found) {
@@ -92,58 +120,28 @@ document.onkeyup = function (event) {
         document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
         // numberGuesses--;
 
+        // } else {
+        //     alert("This letter has already been guessed- try another!");
     }
-    if ((numberGuesses > 0) && (currentWord == answerArray.join(""))) {
-        wins++;
-        console.log("You have completed " + wins + " levels");
-        document.getElementById("win-counter").innerHTML = wins;
-        wonGame();
+
+    // WON: User guessed the full currentWord
+    if ((currentWord == answerArray.join(""))) { 
         
-    } else if (numberGuesses == 0){ 
-        lostGame();
+        console.log("You have completed " + wins + " levels");
+        // Delay wonGame function slightly, so that user can read full word
+        setTimeout(wonGame, 800);
+
+    // LOST: User did not complete currentWord within 12 guesses
+    } else if (numberGuesses === 0) {
+       
+       console.log("You need to play more nintendo.")
+        // Delay lostGame function slightly
+        setTimeout(lostGame, 800);
     }
+
+    // on page load, user types a key, check if it's a new letter, or a repeated letter
+    // then, check if the new letter is part of the currentWord
+    // if new & not repeated, print to alreadyGuessedArray
+    // if repeated, alert user 
    
 }
-
-// $('#resetBtn').click(function(){
-//     //Some code
-// });
-
-/*// Update the game for remaining unknowns
-var remaining_letters = answerArray.length;
-// recount the remaining letters
-for (i = 0; i < answerArray.length; i++) {
-    if (answerArray[i] !== '_') {
-        remaining_letters -= 1;
-    }
-}
-
-// if no remaining letters, hurray, you won
-if (remaining_letters == 0) {
-    playAudio();
-    $("#game-won").css("display");
-}
-*/
-
-/*
-    
-    // Make a counter for guesses remaining
-    numberGuesses--;
-    document.getElementById("guessesLeft").innerHTML = "Number of remaining guesses: " + numberGuesses;
-
-    // Losing Function
-    if (numberGuesses == 0) {
-        document.getElementById("userGuess").innerHTML = "Letters Already Guessed: "; //clear
-        numberGuesses = 12; //counter clear
-        hiddenChar = []; //clear
-        eachChar = []; //clear
-        // Select random word for next round
-        currentWord = wordBank[Math.floor(Math.random() * (wordBank.length))];
-        alert(currentWord);
-        for (var i = 0; i < currentWord.length; i++) {
-            eachChar.push(currentWord.charAt(i));
-            hiddenChar.push(" _ ");
-        };
-        wordPlace.innerHTML = hiddenChar;
-    };
-};*/
