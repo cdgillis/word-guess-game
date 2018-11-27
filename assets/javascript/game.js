@@ -68,8 +68,11 @@ function lostGame() {
 window.onload = startup;
 
 var i = 0;
+// Print the current score (0)
+document.getElementById("win-counter").innerHTML = wins;
 var numberGuesses = 12;
 console.log(numberGuesses);
+// Print the current guesses left (12)
 document.getElementById("guesses-left").innerHTML = numberGuesses;
 
 // USER SELECTS A LETTER GUESS
