@@ -85,7 +85,7 @@ document.onkeyup = function (event) {
 
     var found = false; // A variable name that I chose with a boolean
 
-    // Set number of guesses
+    ////// PREVENT REPEAT GUESSES // ALLOW ONLY ALPHABETICAL KEY PRESSES AS GUESSES ///////
 
     // if (allGuessedLetters.length) {
 
