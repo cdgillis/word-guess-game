@@ -8,6 +8,7 @@ var y = document.getElementById("wrong-audio");
 var won = document.getElementById("won-audio");
 var lost = document.getElementById("lost-audio");
 
+
 // AUDIO
 function playAudio() {
     x.play();
@@ -32,6 +33,86 @@ function startup() {
 
     document.getElementById("answer").innerHTML = answerArray.join(" ")
     console.log(currentWord);
+}
+
+// USER SELECTS A LETTER GUESS
+
+document.onkeyup = function (event) {
+    if (event.keyCode >= 65 && event.keyCode <= 90) {
+    //   numberGuesses -= 1;
+      document.getElementById("guesses-left").innerHTML = numberGuesses;
+      // console.log(numberGuesses);
+      var letter = event.key;
+      var found = false; // A variable name that I chose with a boolean
+
+      ////// PREVENT REPEAT GUESSES // ALLOW ONLY ALPHABETICAL KEY PRESSES AS GUESSES ///////
+
+      // if (allGuessedLetters.length) {
+
+      //     for (var i = 0; i < allGuessedLetters.length; i++) {
+      //         if (allGuessedLetters[i] === letter) {
+      //             console.log("TRY AGAIN");
+      //         } else {
+      //             console.log("WOOHOO");
+      //         }
+      //     }
+      // } else {
+      //     allGuessedLetters.push(letter);
+      // }
+      // console.log(allGuessedLetters);
+      function recall() {
+
+        if (alreadyGuessedArr.indexOf(letter) === -1) {
+            alreadyGuessedArr.push(letter);
+            console.log(alreadyGuessedArr);
+        } else if (alreadyGuessedArr.indexOf(letter) >= 0){
+            console.log(alreadyGuessedArr);
+        }
+
+      }
+
+      //Look for letter in word
+      for (i = 0; i < currentWord.length; i++) {
+        if (currentWord[i] == letter) {
+          // Found the letter
+          x.play();
+          found = true;
+          answerArray[i] = letter;
+          document.getElementById("answer").innerHTML = answerArray.join(" ");
+          // numberGuesses--;
+          recall();
+        } else if (!found) {
+          y.play();
+          // alreadyGuessedArr.push(letter);
+        //   document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
+          numberGuesses--;
+
+          // } else {
+          //     alert("This letter has already been guessed- try another!");
+          recall();
+        }
+      }
+      // Finished checking the word for the letter
+
+      // WON: User guessed the full currentWord
+      if (currentWord == answerArray.join("")) {
+        console.log("You have completed " + wins + " levels");
+        // Delay wonGame function slightly, so that user can read full word
+        setTimeout(wonGame, 800);
+
+        // LOST: User did not complete currentWord within 12 guesses
+      } else if (numberGuesses === 0) {
+        console.log("You need to play more nintendo.");
+        // Delay lostGame function slightly
+        setTimeout(lostGame, 800);
+      }
+
+      // on page load, user types a key, check if it's a new letter, or a repeated letter
+      // then, check if the new letter is part of the currentWord
+      // if new & not repeated, print to alreadyGuessedArray
+      // if repeated, alert user
+        document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
+    }
 }
 
 // resetGame() is called in HTML script
@@ -71,80 +152,7 @@ var i = 0;
 // Print the current score (0)
 document.getElementById("win-counter").innerHTML = wins;
 var numberGuesses = 12;
-console.log(numberGuesses);
+// console.log(numberGuesses);
 // Print the current guesses left (12)
 document.getElementById("guesses-left").innerHTML = numberGuesses;
 
-// USER SELECTS A LETTER GUESS
-
-document.onkeyup = function (event) {
-
-    numberGuesses -= 1;
-    document.getElementById("guesses-left").innerHTML = numberGuesses;
-    console.log(numberGuesses);
-    var letter = event.key;
-    // var allGuessedLetters = [];
-    console.log(letter);
-
-    var found = false; // A variable name that I chose with a boolean
-
-    ////// PREVENT REPEAT GUESSES // ALLOW ONLY ALPHABETICAL KEY PRESSES AS GUESSES ///////
-
-    // if (allGuessedLetters.length) {
-
-    //     for (var i = 0; i < allGuessedLetters.length; i++) {
-    //         if (allGuessedLetters[i] === letter) {
-    //             console.log("TRY AGAIN");
-    //         } else {
-    //             console.log("WOOHOO");
-    //         }
-    //     }
-    // } else {
-    //     allGuessedLetters.push(letter);
-    // }
-    // console.log(allGuessedLetters);
-
-    //Look for letter in word
-    for (i = 0; i < currentWord.length; i++) {
-
-        if (currentWord[i] == letter) {
-            // Found the letter
-            x.play();
-            found = true;
-            answerArray[i] = letter;
-            document.getElementById("answer").innerHTML = answerArray.join(" ");
-            // numberGuesses--;
-        }
-    }
-    // Finished checking the word for the letter
-    if (!found) {
-        y.play();
-        alreadyGuessedArr.push(letter);
-        document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
-        // numberGuesses--;
-
-        // } else {
-        //     alert("This letter has already been guessed- try another!");
-    }
-
-    // WON: User guessed the full currentWord
-    if ((currentWord == answerArray.join(""))) { 
-        
-        console.log("You have completed " + wins + " levels");
-        // Delay wonGame function slightly, so that user can read full word
-        setTimeout(wonGame, 800);
-
-    // LOST: User did not complete currentWord within 12 guesses
-    } else if (numberGuesses === 0) {
-       
-       console.log("You need to play more nintendo.")
-        // Delay lostGame function slightly
-        setTimeout(lostGame, 800);
-    }
-
-    // on page load, user types a key, check if it's a new letter, or a repeated letter
-    // then, check if the new letter is part of the currentWord
-    // if new & not repeated, print to alreadyGuessedArray
-    // if repeated, alert user 
-   
-}
