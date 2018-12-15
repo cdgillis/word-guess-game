@@ -8,7 +8,6 @@ var y = document.getElementById("wrong-audio");
 var won = document.getElementById("won-audio");
 var lost = document.getElementById("lost-audio");
 
-
 // AUDIO
 function playAudio() {
     x.play();
@@ -35,12 +34,42 @@ function startup() {
     console.log(currentWord);
 }
 
+// resetGame() is called in HTML script
+function resetGame() {
+
+    numberGuesses = 12;
+    document.getElementById("guesses-left").innerHTML = numberGuesses;
+    answerArray = [];
+    alreadyGuessedArr = [];
+    document.getElementById("user-guess").innerHTML = alreadyGuessedArr;
+    startup();
+}
+
+function wonGame() {
+    
+    console.log("Level Complete!");
+    $("#container").css("display", "none");
+    $("#game-won").css("display", "block");
+    won.play();
+    // Increase win count by 1
+    wins++;
+    // Print new win total in HTML
+    document.getElementById("win-counter").innerHTML = wins;
+}
+function lostGame() {
+    console.log("GAME OVER");
+    $("#container").css("display", "none");
+    $("#game-lost").css("display", "block");
+    lost.play();
+}
+
 // USER SELECTS A LETTER GUESS
 
 document.onkeyup = function (event) {
     if (event.keyCode >= 65 && event.keyCode <= 90) {
-    //   numberGuesses -= 1;
+      
       document.getElementById("guesses-left").innerHTML = numberGuesses;
+      numberGuesses -= 1;
       // console.log(numberGuesses);
       var letter = event.key;
       var found = false; // A variable name that I chose with a boolean
@@ -85,7 +114,7 @@ document.onkeyup = function (event) {
           y.play();
           // alreadyGuessedArr.push(letter);
         //   document.getElementById("user-guess").innerHTML = alreadyGuessedArr.join(" ");
-          numberGuesses--;
+        //   numberGuesses--;
 
           // } else {
           //     alert("This letter has already been guessed- try another!");
@@ -115,34 +144,7 @@ document.onkeyup = function (event) {
     }
 }
 
-// resetGame() is called in HTML script
-function resetGame() {
 
-    numberGuesses = 12;
-    document.getElementById("guesses-left").innerHTML = numberGuesses;
-    answerArray = [];
-    alreadyGuessedArr = [];
-    document.getElementById("user-guess").innerHTML = alreadyGuessedArr;
-    startup();
-}
-
-function wonGame() {
-    
-    console.log("Level Complete!");
-    $("#container").css("display", "none");
-    $("#game-won").css("display", "block");
-    won.play();
-    // Increase win count by 1
-    wins++;
-    // Print new win total in HTML
-    document.getElementById("win-counter").innerHTML = wins;
-}
-function lostGame() {
-    console.log("GAME OVER");
-    $("#container").css("display", "none");
-    $("#game-lost").css("display", "block");
-    lost.play();
-}
 
 // ON PAGE LOAD
 
