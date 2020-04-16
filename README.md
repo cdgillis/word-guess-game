@@ -8,3 +8,5 @@ An interactive Nintendo-themed game (complete with sound effects) where the user
 * HTML 
 * CSS
 * JQuery
+
+**[View Website](https://cdgillis.github.io/word-guess-game/)**
