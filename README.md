@@ -1,5 +1,7 @@
-# H  A  N  G  M  A  N 
+# [H  A  N  G  M  A  N](https://cdgillis.github.io/word-guess-game/)
 ### Super Mario Stylez
+
+---
 
 An interactive Nintendo-themed game (complete with sound effects) where the user has to 12 attempts to guess the correct word. Enjoy!
 
@@ -9,4 +11,12 @@ An interactive Nintendo-themed game (complete with sound effects) where the user
 * CSS
 * JQuery
 
+---
+
 **[View Website](https://cdgillis.github.io/word-guess-game/)**
+
+---
+
+Enjoy!
+
+-*cdgillis*
