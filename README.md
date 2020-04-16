@@ -13,7 +13,7 @@ An interactive Nintendo-themed game (complete with sound effects) where the user
 
 ---
 
-**[View Website](https://cdgillis.github.io/word-guess-game/)**
+**[Play H A N G M A N](https://cdgillis.github.io/word-guess-game/)**
 
 ---
 
