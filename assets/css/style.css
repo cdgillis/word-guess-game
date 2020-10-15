@@ -143,6 +143,7 @@ body {
     margin-top: 2px;
     padding: 17px;
     display: inline-block;
+    border-radius: 10px;
 }
 
 /* ALREADY GUESSED ARRAY */
