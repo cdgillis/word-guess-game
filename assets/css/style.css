@@ -1,15 +1,49 @@
 /* SCREEN */
 @media 
 
-/* Fairly small screens including iphones */
-only screen and (max-width: 500px),
-
-/* iPads */
-only screen and (min-device-width: 768px) and (max-device-width: 1024px) 
+/* Medium */
+only screen and (max-width: 754px) and (min-width: 447px)
 
 {
-	#top, #bottom, #left, #right { display: none; }
+    div.header { padding-left: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 5px;}
+    #top, #bottom, #left, #right { display: none; }
+    h1#bigTitle { font-size: 1.5em;}
+    h2#subTitle { font-size: 0.75em;
+                padding-right: 10px;
+                margin-right: 0px;}
 }
+
+/* Small */
+@media only screen and (max-width: 446px)
+
+{
+    div.header { padding-left: 0px;
+                padding-bottom: 0px;
+                margin-bottom: 0px;
+            margin-top: 0px;
+        height: 82px;}
+    #top, #bottom, #left, #right { display: none; }
+    h1#bigTitle { font-size: 20px;
+    margin-top: 0px;}
+    h2#subTitle { font-size: 13px;
+                padding-right: 5px;
+                margin-right: 0px;
+            padding-top: 14px;}
+}
+
+/* BACKGROUND PHOTO SWAP */
+
+@media only screen and (min-width: 769px)
+{ body { background: url('supermario.jpg');}}
+
+@media only screen and (max-width: 768px) 
+{ body {  background: url('mario-mobile.jpg');}}
+
+    /* iPad Pro */
+    @media only screen and (min-height: 1366px) 
+    { body {  background: url('mario-mobile.jpg');}}
 
 /* OUTSIDE BORDER */
 #top, #bottom, #left, #right {
@@ -38,7 +72,10 @@ body {
     font-size: 22px;
     width: 100%;
     height: 400px;
-    background: url('supermario.jpg') no-repeat center center fixed;
+    background-position: center center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+   
     background-size: cover;
     text-align: center;
     z-index: -1;
@@ -79,24 +116,39 @@ body {
 /* GENERAL GAME DIV */
 #container {
 
-    margin-left: 40px;
+    /* margin-left: 40px; */
     font-family: 'Bungee Inline', cursive;
     text-align: center;
     font-weight: bold;
 }
 
 /* SCOREBOARD */
+
+#win-counter {
+    font-family: 'Press Start 2P', cursive;
+    /* padding: 10px; */
+    display: inline-block;
+    color: hotpink;
+    margin-left: 20px;
+}
+
 #winBox {
 
     color: white;
-    padding: 10px;
-    font-family: 'Press Start 2P', cursive;
+    /* padding: 10px; */
+    font-family: 'Bungee Inline', cursive;
+    width: auto;
+    height: auto;
+    background-color: black;
+    margin-top: 2px;
+    padding: 17px;
+    display: inline-block;
 }
 
 /* ALREADY GUESSED ARRAY */
 #user-guess {
 
-    width: 20%;
+    width: 20rem;
     height: 18px;
     background-color: black;
     color: white;
@@ -134,7 +186,8 @@ body {
 #game-won {
     
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
+    height: auto;
     background-color: green;
    
 }
@@ -150,7 +203,8 @@ body {
 #game-lost {
 
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    height: auto;
     background-color: black;
 }
 
